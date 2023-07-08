@@ -140,6 +140,7 @@ sayHelloDefault();
 //配列の展開
 const arraySpread = [1, 2];
 console.log(arraySpread);
+//分割代入以外で使うと、配列が展開
 console.log(...arraySpread);
 
 const sumFunc = (num1 = 1, num2 = 4) => console.log(num1 + num2);
@@ -149,6 +150,7 @@ sumFunc(...arraySpread);
 
 //まとめる
 const arraySpread2 = [1, 2, 3, 4, 5];
+//分割代入するとまとまる
 const [num1, num2, ...arr3] = arraySpread2;
 
 console.log(num1);
@@ -164,3 +166,62 @@ console.log(arraySpread5);
 //配列の結合
 const arraySpread6 = [...arraySpread3, ...arraySpread4];
 console.log(arraySpread6);
+
+/**
+ * 配列の操作
+ *
+ */
+const nameArr = ["arex", "brex", "crex"];
+
+for (let index = 0; index < nameArr.length; index++) {
+  console.log(nameArr[index]);
+}
+
+//新しい配列を生成するパターン
+const nameArr2 = nameArr.map((name) => {
+  return name + "map処理";
+});
+
+//ループ処理するパターン
+nameArr.map((name, index) => {
+  console.log(index + "番目" + name + "map処理");
+});
+
+const numArr = [1, 2, 3, 4, 5];
+const newNumArr = numArr.filter((num) => {
+  //2で割った余りが１の数値のみを返却する
+  return num % 2 === 1;
+});
+
+console.log(newNumArr);
+
+const newArr3 = nameArr.map((name) => {
+  if (name === "crex") {
+    return name;
+  } else {
+    return `${name}さん`;
+  }
+});
+
+console.log(newArr3);
+
+nameArr.map((name) => {
+  if (name === "crex") {
+    console.log(name);
+  } else {
+    console.log(`${name}さん`);
+  }
+});
+
+// ||　は　左側が　false なら　右側を返す。
+
+//nullはfalse判定
+const num = null;
+
+const fee = num || "金額未設定";
+console.log(fee);
+
+//&& は左側がtrueなら右側を返す
+const numTwo = 100;
+const feeTwo = numTwo && "何か設定されました";
+console.log(feeTwo);

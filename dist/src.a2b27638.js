@@ -255,6 +255,7 @@ sayHelloDefault();
 //配列の展開
 var arraySpread = [1, 2];
 console.log(arraySpread);
+//分割代入以外で使うと、配列が展開
 (_console = console).log.apply(_console, arraySpread);
 var sumFunc = function sumFunc() {
   var num1 = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
@@ -267,6 +268,7 @@ sumFunc.apply(void 0, arraySpread);
 
 //まとめる
 var arraySpread2 = [1, 2, 3, 4, 5];
+//分割代入するとまとまる
 var num1 = arraySpread2[0],
   num2 = arraySpread2[1],
   arr3 = arraySpread2.slice(2);
@@ -283,6 +285,58 @@ console.log(arraySpread5);
 //配列の結合
 var arraySpread6 = [].concat(arraySpread3, arraySpread4);
 console.log(arraySpread6);
+
+/**
+ * 配列の操作
+ *
+ */
+var nameArr = ["arex", "brex", "crex"];
+for (var index = 0; index < nameArr.length; index++) {
+  console.log(nameArr[index]);
+}
+
+//新しい配列を生成するパターン
+var nameArr2 = nameArr.map(function (name) {
+  return name + "map処理";
+});
+
+//ループ処理するパターン
+nameArr.map(function (name, index) {
+  console.log(index + "番目" + name + "map処理");
+});
+var numArr = [1, 2, 3, 4, 5];
+var newNumArr = numArr.filter(function (num) {
+  //2で割った余りが１の数値のみを返却する
+  return num % 2 === 1;
+});
+console.log(newNumArr);
+var newArr3 = nameArr.map(function (name) {
+  if (name === "crex") {
+    return name;
+  } else {
+    return "".concat(name, "\u3055\u3093");
+  }
+});
+console.log(newArr3);
+nameArr.map(function (name) {
+  if (name === "crex") {
+    console.log(name);
+  } else {
+    console.log("".concat(name, "\u3055\u3093"));
+  }
+});
+
+// ||　は　左側が　false なら　右側を返す。
+
+//nullはfalse判定
+var num = null;
+var fee = num || "金額未設定";
+console.log(fee);
+
+//&& は左側がtrueなら右側を返す
+var numTwo = 100;
+var feeTwo = numTwo && "何か設定されました";
+console.log(feeTwo);
 },{}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
